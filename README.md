@@ -49,13 +49,13 @@ module "rbac_admin" {
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | ~>1.0 |
-| <a name="requirement_azapi"></a> [azapi](#requirement\_azapi) | 1.12.0 |
+| <a name="requirement_azapi"></a> [azapi](#requirement\_azapi) | ~>1.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_azapi"></a> [azapi](#provider\_azapi) | 1.12.0 |
+| <a name="provider_azapi"></a> [azapi](#provider\_azapi) | ~>1.0 |
 
 ## Modules
 
@@ -65,7 +65,7 @@ No modules.
 
 | Name | Type |
 |------|------|
-| [azapi_resource.testing](https://registry.terraform.io/providers/Azure/azapi/1.12.0/docs/resources/resource) | resource |
+| [azapi_resource.rbac_admin](https://registry.terraform.io/providers/Azure/azapi/latest/docs/resources/resource) | resource |
 
 ## Inputs
 

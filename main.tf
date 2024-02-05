@@ -1,4 +1,4 @@
-resource "azapi_resource" "testing" {
+resource "azapi_resource" "rbac_admin" {
   type      = "Microsoft.Authorization/roleAssignments@2022-04-01"
   name      = local.guid
   parent_id = var.scope
