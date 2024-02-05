@@ -9,39 +9,36 @@ For more information on the role, please visit the [Azure Documentation]()
 
 ```
 module "rbac_admin" {
-  source = "..."
-scope = "/subscriptions/00000000-0000-0000-0000-000000000000"
-role_id_to_assign = "acdd72a7-3385-48ef-bd42-f606fba81ae7" # Reader
-object_id_to_be_added_to_rbac_admin_role = "00000000-0000-0000-0000-000000000000" # Object ID of the user to be added
-principal_type = "User"
-constrain_roles = true
+    scope = "/subscriptions/00000000-0000-0000-0000-000000000000"
+    role_id_to_assign = "acdd72a7-3385-48ef-bd42-f606fba81ae7" # Reader
+    object_id_to_be_added_to_rbac_admin_role = "00000000-0000-0000-0000-000000000000" # Object ID of the user to be added
+    principal_type = "User"
+    constrain_roles = true
 }
 ```
 
-### Example constrain_roles_and_principal_types
+### Example Constrain Roles and Principal Types
 ```
 module "rbac_admin" {
-  source = "..."
-scope = "/subscriptions/00000000-0000-0000-0000-000000000000"
-role_id_to_assign = "acdd72a7-3385-48ef-bd42-f606fba81ae7" # Reader
-object_id_to_be_added_to_rbac_admin_role = "00000000-0000-0000-0000-000000000000" # Object ID of the group to be added
-principal_type = "Group"
-user_type = true
-group_type = true
-constrain_roles_and_principal_types = true
+    scope = "/subscriptions/00000000-0000-0000-0000-000000000000"
+    role_id_to_assign = "acdd72a7-3385-48ef-bd42-f606fba81ae7" # Reader
+    object_id_to_be_added_to_rbac_admin_role = "00000000-0000-0000-0000-000000000000" # Object ID of the group to be added
+    principal_type = "Group"
+    user_type = true
+    group_type = true
+    constrain_roles_and_principal_types = true
 }
 ```
 
-### Exmaple constrain_roles_and_principals
+### Exmaple Constrain Roles and Principals
 ```
 module "rbac_admin" {
-  source = "..."
-scope = "/subscriptions/00000000-0000-0000-0000-000000000000"
-role_id_to_assign = "acdd72a7-3385-48ef-bd42-f606fba81ae7" # Reader
-object_id_to_be_added_to_rbac_admin_role = "00000000-0000-0000-0000-000000000000" # Object ID of the user to be added
-principal_type = "User"
-constrain_roles_and_principals = true
-object_ids_that_can_given_the_role = ["00000000-0000-0000-0000-000000000000", "00000000-0000-0000-0000-000000000001"]
+    scope = "/subscriptions/00000000-0000-0000-0000-000000000000"
+    role_id_to_assign = "acdd72a7-3385-48ef-bd42-f606fba81ae7" # Reader
+    object_id_to_be_added_to_rbac_admin_role = "00000000-0000-0000-0000-000000000000" # Object ID of the user to be added
+    principal_type = "User"
+    constrain_roles_and_principals = true
+    object_ids_that_can_given_the_role = ["00000000-0000-0000-0000-000000000000", "00000000-0000-0000-0000-000000000001"]
 }
 ```
 
