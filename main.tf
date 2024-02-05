@@ -7,7 +7,7 @@ resource "azapi_resource" "testing" {
       condition        = local.conditionString
       conditionVersion = "2.0"
       description      = var.description
-      principalId      = var.object_id_of_user_to_be_added
+      principalId      = var.object_id_to_be_added_to_rbac_admin_role
       principalType    = var.principal_type
       roleDefinitionId = local.role_definition_id
     }

@@ -14,8 +14,8 @@ locals {
 
   list_over_types = trim(trim("${local.user_type}${local.group_type}${local.service_principal_type}", " "), ",")
 
-  # Need to create a string of object IDs in the list from the variable object_ids_that_can_given_the_role
-  object_ids_that_can_given_the_role = join(",", var.object_ids_that_can_given_the_role)
+  # Need to create a string of object IDs in the list from the variable object_ids_that_can_be_given_the_role
+  object_ids_that_can_be_given_the_role = join(",", var.object_ids_that_can_be_given_the_role)
 
   # Creating the condition string
   prefix        = "((!(ActionMatches{'Microsoft.Authorization/roleAssignments/write'})) OR (@Request[Microsoft.Authorization/roleAssignments:RoleDefinitionId] ForAnyOfAnyValues:GuidEquals {${local.role_id_to_assign}}"
@@ -25,7 +25,7 @@ locals {
 
   constrain_roles                     = "${local.prefix})) ${local.defaultString}))"
   constrain_roles_and_principal_types = "${local.prefix} AND @Request[Microsoft.Authorization/roleAssignments:PrincipalType] ForAnyOfAnyValues:StringEqualsIgnoreCase {${local.list_over_types}})) ${local.defaultString} AND @Resource[Microsoft.Authorization/roleAssignments:PrincipalType] ForAnyOfAnyValues:StringEqualsIgnoreCase {${local.list_over_types}}))"
-  constrain_roles_and_principals      = "${local.prefix} AND @Request[Microsoft.Authorization/roleAssignments:PrincipalId] ForAnyOfAnyValues:GuidEquals {${local.object_ids_that_can_given_the_role}})) ${local.defaultString} AND @Resource[Microsoft.Authorization/roleAssignments:PrincipalId] ForAnyOfAnyValues:GuidEquals {${local.object_ids_that_can_given_the_role}}))"
+  constrain_roles_and_principals      = "${local.prefix} AND @Request[Microsoft.Authorization/roleAssignments:PrincipalId] ForAnyOfAnyValues:GuidEquals {${local.object_ids_that_can_be_given_the_role}})) ${local.defaultString} AND @Resource[Microsoft.Authorization/roleAssignments:PrincipalId] ForAnyOfAnyValues:GuidEquals {${local.object_ids_that_can_be_given_the_role}}))"
 
   constrain_roles_enabled                     = var.constrain_roles == true ? local.constrain_roles : ""
   constrain_roles_and_principal_types_enabled = var.constrain_roles_and_principal_types == true ? local.constrain_roles_and_principal_types : ""

@@ -14,7 +14,7 @@ variable "role_id_to_assign" {
   type        = string
 }
 
-variable "object_id_of_user_to_be_added" {
+variable "object_id_to_be_added_to_rbac_admin_role" {
   description = "The object ID of the user, group, or service principal you want to assign the role Role Based Access Control Administrator to."
   type        = string
 }
@@ -65,7 +65,7 @@ variable "constrain_roles_and_principals" {
   default     = false
 }
 
-variable "object_ids_that_can_given_the_role" {
+variable "object_ids_that_can_be_given_the_role" {
   description = "Only used when constrain_roles_and_principals is set to true. The object IDs of the users, groups, or service principals that will be given the chosen role. This is a list of object IDs. Example: [\"00000000-0000-0000-0000-000000000000\", \"00000000-0000-0000-0000-000000000001\"]"
   type        = list(string)
   default     = []
