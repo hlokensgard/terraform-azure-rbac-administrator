@@ -42,6 +42,17 @@ module "rbac_admin" {
 }
 ```
 
+### Example Custom Condition
+```
+module "rbac_admin" {
+    scope = "/subscriptions/00000000-0000-0000-0000-000000000000"
+    role_id_to_assign = "acdd72a7-3385-48ef-bd42-f606fba81ae7" # Reader
+    object_id_to_be_added_to_rbac_admin_role = "00000000-0000-0000-0000-000000000000" # Object ID of the user to be added
+    principal_type = "User"
+    enable_custom_condition = true
+    custom_condition = ""
+}
+```
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
@@ -55,7 +66,7 @@ module "rbac_admin" {
 
 | Name | Version |
 |------|---------|
-| <a name="provider_azapi"></a> [azapi](#provider\_azapi) | ~>1.0 |
+| <a name="provider_azapi"></a> [azapi](#provider\_azapi) | 1.12.0 |
 
 ## Modules
 
@@ -72,15 +83,17 @@ No modules.
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_object_id_to_be_added_to_rbac_admin_role"></a> [object\_id\_to\_be\_added\_to\_rbac\_admin\_role](#input\_object\_id\_to\_be\_added\_to\_rbac\_admin\_role) | The object ID of the user, group, or service principal you want to assign the role Role Based Access Control Administrator to. | `string` | n/a | yes |
-| <a name="input_role_id_to_assign"></a> [role\_id\_to\_assign](#input\_role\_id\_to\_assign) | The role definition ID to assign. This is the ID of the role you want the users to be able to assign to others. This could be Storage Blob Data Contributor, Virtual Machine Contributor, etc. | `string` | n/a | yes |
 | <a name="input_scope"></a> [scope](#input\_scope) | The scope of the resource. This can be a subscription, resource group, or resource. Most common is an subscription. Example: /subscriptions/00000000-0000-0000-0000-000000000000 | `string` | n/a | yes |
 | <a name="input_constrain_roles"></a> [constrain\_roles](#input\_constrain\_roles) | If you want to constrain the role assignment to only be able to assign the role, set this to true | `bool` | `false` | no |
 | <a name="input_constrain_roles_and_principal_types"></a> [constrain\_roles\_and\_principal\_types](#input\_constrain\_roles\_and\_principal\_types) | If you want to constrain the role assignment to only be able to assign the role to a specific principal type, set this to true | `bool` | `false` | no |
 | <a name="input_constrain_roles_and_principals"></a> [constrain\_roles\_and\_principals](#input\_constrain\_roles\_and\_principals) | If you want to constrain the role assignment to only be able to assign the role to a specific principal, set this to true | `bool` | `false` | no |
+| <a name="input_custom_condition"></a> [custom\_condition](#input\_custom\_condition) | Only used when enable\_custom\_condition is set to true. The custom condition for the role assignment. | `string` | `""` | no |
 | <a name="input_description"></a> [description](#input\_description) | The description of the role assignment. This is just used as meta data and is not required. Example: This role assignment is for... | `string` | `""` | no |
+| <a name="input_enable_custom_condition"></a> [enable\_custom\_condition](#input\_enable\_custom\_condition) | If you want to enable a custom condition for the role assignment, set this to true | `bool` | `false` | no |
 | <a name="input_group_type"></a> [group\_type](#input\_group\_type) | Only in use when constrain\_roles\_and\_principal\_types is set to true. If you want to assign the role to a group, set this to true | `bool` | `false` | no |
 | <a name="input_object_ids_that_can_be_given_the_role"></a> [object\_ids\_that\_can\_be\_given\_the\_role](#input\_object\_ids\_that\_can\_be\_given\_the\_role) | Only used when constrain\_roles\_and\_principals is set to true. The object IDs of the users, groups, or service principals that will be given the chosen role. This is a list of object IDs. Example: ["00000000-0000-0000-0000-000000000000", "00000000-0000-0000-0000-000000000001"] | `list(string)` | `[]` | no |
 | <a name="input_principal_type"></a> [principal\_type](#input\_principal\_type) | The type of principal you want to assign the role Role Based Access Control Administrator to. This can be User, Group, or ServicePrincipal | `string` | `"User"` | no |
+| <a name="input_role_id_to_assign"></a> [role\_id\_to\_assign](#input\_role\_id\_to\_assign) | The role definition ID to assign. This is the ID of the role you want the users to be able to assign to others. This could be Storage Blob Data Contributor, Virtual Machine Contributor, etc. | `string` | `""` | no |
 | <a name="input_service_principal_type"></a> [service\_principal\_type](#input\_service\_principal\_type) | Only in use when constrain\_roles\_and\_principal\_types is set to true. If you want to assign the role to a service principal, set this to true | `bool` | `false` | no |
 | <a name="input_user_type"></a> [user\_type](#input\_user\_type) | Only in use when constrain\_roles\_and\_principal\_types is set to true. If you want to assign the role to a user, set this to true | `bool` | `false` | no |
 

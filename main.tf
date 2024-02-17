@@ -4,7 +4,7 @@ resource "azapi_resource" "rbac_admin" {
   parent_id = var.scope
   body = jsonencode({
     properties = {
-      condition        = local.conditionString
+      condition        = local.condition_string
       conditionVersion = "2.0"
       description      = var.description
       principalId      = var.object_id_to_be_added_to_rbac_admin_role

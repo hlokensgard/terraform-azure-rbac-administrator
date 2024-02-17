@@ -29,5 +29,6 @@ locals {
   constrain_roles_and_principal_types_enabled = var.constrain_roles_and_principal_types == true ? local.constrain_roles_and_principal_types : ""
   constrain_roles_and_principals_enabled      = var.constrain_roles_and_principals == true ? local.constrain_roles_and_principals : ""
 
-  conditionString = var.constrain_roles == true ? local.constrain_roles_enabled : var.constrain_roles_and_principal_types == true ? local.constrain_roles_and_principal_types_enabled : var.constrain_roles_and_principals == true ? local.constrain_roles_and_principals_enabled : ""
+  condition        = var.constrain_roles == true ? local.constrain_roles_enabled : var.constrain_roles_and_principal_types == true ? local.constrain_roles_and_principal_types_enabled : var.constrain_roles_and_principals == true ? local.constrain_roles_and_principals_enabled : ""
+  condition_string = var.enable_custom_condition == true ? var.custom_condition : local.condition
 }

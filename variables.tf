@@ -12,6 +12,7 @@ variable "description" {
 variable "role_id_to_assign" {
   description = "The role definition ID to assign. This is the ID of the role you want the users to be able to assign to others. This could be Storage Blob Data Contributor, Virtual Machine Contributor, etc."
   type        = string
+  default     = ""
 }
 
 variable "object_id_to_be_added_to_rbac_admin_role" {
@@ -69,4 +70,16 @@ variable "object_ids_that_can_be_given_the_role" {
   description = "Only used when constrain_roles_and_principals is set to true. The object IDs of the users, groups, or service principals that will be given the chosen role. This is a list of object IDs. Example: [\"00000000-0000-0000-0000-000000000000\", \"00000000-0000-0000-0000-000000000001\"]"
   type        = list(string)
   default     = []
+}
+
+variable "enable_custom_condition" {
+  description = "If you want to enable a custom condition for the role assignment, set this to true"
+  type        = bool
+  default     = false
+}
+
+variable "custom_condition" {
+  description = "Only used when enable_custom_condition is set to true. The custom condition for the role assignment."
+  type        = string
+  default     = ""
 }
